@@ -700,13 +700,52 @@
             color: white;
             font-size: 1.2em;
         }
+
+
+    .botao-bonito {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 18px;
+        color: #fff;
+        background-color: #007BFF;
+        border-radius: 8px; 
+        text-decoration: none;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        transition:background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .botao-bonito:hover {
+        background-color: #0056b3;
+        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .botao-bonito:active {
+        background-color: #004085;
+    }
+
+
     </style>
 </head>
 <body>
+    
  <!-- Vídeo de fundo -->
- <div class="background-video">
-    <iframe id="background-video" width="100%" height="100%" src="https://www.youtube.com/embed/doxS6QCVvEA?autoplay=1&mute=0&controls=0&loop=1&playlist=doxS6QCVvEA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
- </div>
+ <!-- Vídeo de fundo -->
+    <div class="background-video">
+        <iframe id="background-video" width="100%" height="100%" 
+        src="https://www.youtube.com/embed/doxS6QCVvEA?autoplay=1&mute=1&controls=0&loop=1&playlist=doxS6QCVvEA" 
+        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
+    <!-- Botão para ativar o som -->
+    <button onclick="enableSound()">Ativar Som</button>
+
+    <script>
+        function enableSound() {
+            const iframe = document.getElementById('background-video');
+            iframe.src = "https://www.youtube.com/embed/doxS6QCVvEA?autoplay=1&mute=0&controls=0&loop=1&playlist=doxS6QCVvEA";
+        }
+    </script>
+</body>
  
     <!-- Menu lateral -->
     <div class="menu">

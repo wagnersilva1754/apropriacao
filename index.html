@@ -81,7 +81,7 @@
             margin-top: 20px;
             display: none;
             background-color: rgba(255, 255, 255, 0.1);
-            color: white;
+            color: rgba(255, 255, 255, 0);
         }
         .hammer-animation {
             display: none;
@@ -129,7 +129,7 @@
     color: #925d07; /* Cor do texto */
     text-shadow: 
         2px 2px 4px rgba(214, 8, 8, 0.7), 
-        0 0 15px rgba(255, 255, 255, 0.5); /* Sombras */
+        0 0 15px rgba(255, 255, 255, 0); /* Sombras */
     position: relative; /* Para a sombra se posicionar corretamente */
     overflow: hidden; /* Para esconder o overflow do brilho */
 }
@@ -237,9 +237,9 @@
                 return;
             }
 
-            const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            const numbers = "0123456789";
-            const specialChars = "!@#$%^&*";
+            const letters = "⋭ ⋮ ⋯ ⋰ ⋱ ⋲ ⋳ ⋴ ⋵ ⋶ ⋷ ⋸ ⋹ ⋺ ⋻ ⋼ ⋽ ⋾YZ";
+            const numbers = " ˌ ˍ ˎ ˏ ˑ ˒ ˓ ˔ ˕ ˖ ˗ ˘ ˙ ˚ ˛ ˜ ˝ ˝ ˟ ˠ ˡ ˢ";
+            const specialChars = " ∳ ∴ ∵ ∶ ∷ ∸ ∹ ∺ ";
             let password = "";
 
             for (let i = 0; i < 4; i++) {

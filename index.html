@@ -27,6 +27,7 @@
             display: block;
             transition: transform 0.3s ease-in-out;
             animation: pulse 1s infinite;
+            
         }
         .logo:hover {
             transform: scale(1.2);
@@ -43,6 +44,7 @@
             width: 850px;
             height: auto;
             cursor: pointer;
+            z-index: -1; /* Para garantir que a imagem fique atrás dos outros elementos */
         }
         .title {
             font-size: 45px;
@@ -157,8 +159,8 @@
     </style>
 </head>
 <body>
-    <img src="https://i.ibb.co/TkjdDwN/baixados.png" alt="Logo Principal" class="logo">
-    <img class="logo1" src="https://i.ibb.co/C73w9kv/image-removebg-preview-21.png" alt="Logo1" onclick="showResetIPBox()" style="opacity: 0.8;">
+    <img src="https://i.ibb.co/TkjdDwN/baixados.png" alt="Logo Principal" class="logo" onclick="showResetIPBox()">
+    <img class="logo1" src="https://i.ibb.co/C73w9kv/image-removebg-preview-21.png" alt="Logo1"  style="opacity: 0.8;"alt="Imagem de Fundo" class="background-image">
     <div class="title">TESTE DE ADMISSÃO</div>
 
     <div class="password-container">

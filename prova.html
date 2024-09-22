@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prova Judiciário</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, black, orange);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            color: white;
+        }
+        .logo1 {
+            position: absolute;
+            top: 0%;
+            left: -15%;
+            width: 850px;
+            height: auto;
+            cursor: pointer;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 24px;
+            margin-top: 0;
+        }
+        .ip-text {
+            position: absolute;
+            top: -22px;
+            right: 45px;
+            font-size: 17px;
+            color: white;
+            padding: 20px;
+            margin-top: 50px;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .btn-gerar-teste, .btn-iniciar-teste {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: orange;
+            border: none;
+            color: black;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn-gerar-teste:hover, .btn-iniciar-teste:hover {
+            background-color: #ffcc66;
+        }
+        #video-container {
+            margin-top: 20px;
+            display: none;
+        }
+        #quiz-container {
+            display: none;
+        }
+        #notification {
+            margin-top: 20px;
+            color: lime;
+        }
+        .end-test, .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: orange;
+            border: none;
+            color: black;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <img class="logo1" src="https://i.ibb.co/C73w9kv/image-removebg-preview-21.png" alt="Logo1" style="opacity: 0.8;">
+    <div class="container">
+        <h1>Prova Judiciário</h1>
+        <p>Bem-vindo à plataforma de provas do judiciário.</p>
+        <button class="btn-gerar-teste" id="btn-gerar-teste">Gerar Teste</button>
+        <div id="video-container">
+            <iframe id="video" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <button id="iniciar-teste-btn" class="btn-iniciar-teste">Iniciar Teste</button>
+        <div id="quiz-container"></div>
+        <button id="end-test" class="btn">Encerrar Teste</button>
+        <div id="result"></div>
+        <div id="notification"></div>
+    </div>
+
+    <div class="ip-text" id="ip-address">
+        Bem-vindo IP [carregando...]
+    </div>
+
+    <script>
+        // Pega o IP do usuário
+        fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('ip-address').textContent = `Bem-vindo IP ${data.ip}`;
+        })
+        .catch(error => {
+            document.getElementById('ip-address').textContent = "IP não disponível";
+        });
+
+        // Variáveis do teste
+        const ip = "138.97.20.243"; // IP fixo para testes
+        const startTime = Date.now(); // Início do tempo
+        const questions = [
+            { question: "Qual é a capital do Brasil?", options: ["Rio de Janeiro", "Brasília", "São Paulo", "Salvador"], correctAnswer: 1 },
+            { question: "Qual é a maior floresta do mundo?", options: ["Floresta Amazônica", "Floresta Negra", "Floresta de Redwood", "Floresta Boreal"], correctAnswer: 0 },
+            // Adicione mais perguntas conforme necessário
+        ];
+
+        let selectedQuestions = [];
+
+        // Gera o teste e exibe o vídeo
+        document.getElementById('btn-gerar-teste').addEventListener('click', function() {
+            const videoContainer = document.getElementById('video-container');
+            const videoIframe = document.getElementById('video');
+            videoContainer.style.display = 'block';
+            videoIframe.src = 'https://www.youtube.com/embed/ESgGGkRvKIY'; // URL do vídeo
+        });
+
+        // Inicia o quiz ao clicar em "Iniciar Teste"
+        document.getElementById('iniciar-teste-btn').addEventListener('click', function() {
+            const videoContainer = document.getElementById('video-container');
+            videoContainer.style.display = 'none'; // Esconde o vídeo
+            this.style.display = 'none'; // Esconde o botão de iniciar teste
+
+            selectedQuestions = [];
+            for (let i = 0; i < Math.min(12, questions.length); i++) {
+                selectedQuestions.push(questions[i % questions.length]);
+            }
+
+            const quizContainer = document.getElementById('quiz-container');
+            quizContainer.style.display = 'block'; // Exibe o container do quiz
+
+            selectedQuestions.forEach((q, index) => {
+                const questionElement = document.createElement('div');
+                questionElement.className = 'question';
+                questionElement.innerHTML = `
+                    <p>${index + 1}. ${q.question}</p>
+                    ${q.options.map((option, i) => `<label><input type="radio" name="q${index}" value="${i}"> ${option}</label><br>`).join('')}
+                `;
+                quizContainer.appendChild(questionElement);
+            });
+        });
+
+        // Ao clicar em "Encerrar Teste"
+document.getElementById('end-test').addEventListener('click', () => {
+    const confirmEnd = confirm("Tem certeza que deseja finalizar?");
+    if (confirmEnd) {
+        const answers = [];
+        selectedQuestions.forEach((_, index) => {
+            const selected = document.querySelector(`input[name="q${index}"]:checked`);
+            answers.push(selected ? parseInt(selected.value) : null);
+        });
+
+        const correctAnswers = selectedQuestions.filter((q, index) => q.correctAnswer === answers[index]).length;
+        const totalTime = ((Date.now() - startTime) / 1000).toFixed(3); // Tempo total em segundos
+        const reportSummary = {
+            content: `Resultados do teste:\nIP: ${ip}\nPontuação: ${correctAnswers} de ${selectedQuestions.length}\nTempo total: ${totalTime} segundos\nProbabilidade de burla: Alta\nJustificativa: O tempo para concluir o teste foi muito curto, sugerindo a possibilidade de burla.\nAprovação: Reprovado`
+        };
+
+        // Enviando o relatório resumido
+        fetch('https://discordapp.com/api/webhooks/1286336122288345149/4WEaN5Ild2GTYqUF31TKd30tSMkKVFCcE8x5rE_HXxFFUknhWT7bqsK5tr0zQT0OFlJa', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(reportSummary),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Erro HTTP: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(() => {
+            document.getElementById('notification').innerText = "Relatório resumido enviado com sucesso!";
+        })
+        .catch((error) => {
+            document.getElementById('notification').innerText = "Enviado.";
+            console.error('Enviado:', error);
+        });
+
+        // Relatório detalhado
+        const detailedReport = {
+            content: `Relatório Detalhado:\nIP: ${ip}\nData: ${new Date().toISOString()}\nPerguntas:\n` + selectedQuestions.map((q, index) => 
+                `${index + 1}. ${q.question}\nResposta Correta: ${q.options[q.correctAnswer]}\nSua Resposta: ${answers[index] !== null ? q.options[answers[index]] : "Nenhuma resposta"}\n`
+            ).join('')
+        };
+
+         // Enviando o relatório detalhado
+         fetch('https://discordapp.com/api/webhooks/1287213598665474081/5VzqnkXeW9xRlkCFMvR4CYGIdhkrNEg0l54siUDSrJa9RATh1r7H9q7BC0eZ3a07Oejl', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(detailedReport),
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Erro HTTP: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(() => {
+                    document.getElementById('notification').innerText += "\nRelatório detalhado enviado com sucesso!";
+                })
+                .catch((error) => {
+                    document.getElementById('notification').innerText += "\nRelatório detalhado enviado com sucesso!";
+                    console.error('Relatório detalhado enviado com sucesso!:', error);
+                });
+
+        // Redireciona para a página desejada após o envio
+        setTimeout(() => {
+            window.location.href = "https://wagnersilva1754.github.io/juridico/"; // Substitua pela URL real
+        }, 3000); // Espera 3 segundos antes de redirecionar
+    }
+});
+
+    </script>
+</body>
+</html>

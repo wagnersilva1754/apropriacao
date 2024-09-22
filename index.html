@@ -459,14 +459,20 @@
         }
 
         function checkPassword() {
-            const password = document.getElementById("password").value;
-            if (password === generatedPassword) {
-                document.getElementById("messageBox").innerText = `Acesso concedido, ${document.getElementById("name").value}!`;
-                document.getElementById("messageBox").style.display = "block";
-            } else {
-                alert("Senha incorreta!");
-            }
-        }
+    const password = document.getElementById("password").value;
+    if (password === generatedPassword) {
+        document.getElementById("messageBox").innerText = `Acesso concedido, ${document.getElementById("name").value}!`;
+        document.getElementById("messageBox").style.display = "block";
+        
+        // Redireciona após 2 segundos
+        setTimeout(() => {
+            window.location.href = 'prova.html';
+        }, 1000);
+    } else {
+        alert("Senha incorreta!");
+    }
+}
+
 
         function resetIP() {
     const resetIPValue = document.getElementById("resetIP").value;

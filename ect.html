@@ -11,6 +11,9 @@
             background: linear-gradient(to bottom, rgb(27, 27, 95), rgb(33, 11, 175));
             color: white;
             text-align: center;
+            background-image: url('https://i.ibb.co/GPnYChj/Whats-App-Image-2024-10-10-at-10-31-02.jpg');
+            background-size: cover;
+            background-position: center;
         }
         .container {
             padding: 20px;
@@ -125,7 +128,7 @@
         <div class="buttons">
             <button onclick="toggleMenu('ect-menu')">ECT</button>
             <button onclick="redirectToCompactacao()">Compactação</button>
-            <button>Retrabalho</button>
+            <button onclick="redirectToexpurgo()">expurgo</button>
         </div>
 
         <div id="ect-menu" class="hidden-menu">
@@ -212,6 +215,9 @@
 
         function redirectToCompactacao() {
             window.location.href = "index.html"; // Redireciona para a página "compactacao.html"
+        }
+        function redirectToexpurgo() {
+            window.location.href = "expurgo.html"; // Redireciona para a página "compactacao.html"
         }
 
         function sendReport(counterId, value) {

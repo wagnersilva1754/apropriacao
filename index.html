@@ -3,683 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Setor Jurídico</title>
+    <title>4 BEC - Login</title>
     <style>
         body {
-            background: linear-gradient(to bottom, #000000f1, #000000);
-            color: rgba(190, 127, 0, 0.827);
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: flex-start; /* Alinha ao topo */
+            align-items: center;
+            flex-direction: column;
+            background-image: url('https://i.ibb.co/nLdShJq/image.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
             font-family: Arial, sans-serif;
             text-align: center;
-            height: 100vh;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            position: relative;
-            padding-top: 20px;
         }
+
         .logo {
-            width: 100px;
-            height: 100px;
-            border-radius: 1000%;
-            margin-bottom: 10px;
-            display: block;
-            transition: transform 0.3s ease-in-out;
-            animation: pulse 1s infinite;
-            
+            margin-top: 20px; /* Margem superior para distanciar um pouco da borda */
         }
-        .logo:hover {
-            transform: scale(1.2);
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            display: inline-block;
+            text-align: center;
+            margin-top: 10px; /* Espaçamento entre a logo e o contêiner */
         }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        .logo1 {
-            position: absolute;
-            top: 0%;
-            left: -15%;
-            width: 850px;
-            height: auto;
+
+        .login-button {
+            padding: 10px 20px;
+            font-size: 22px;
             cursor: pointer;
-            z-index: -1; /* Para garantir que a imagem fique atrás dos outros elementos */
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            transition: background-color 0.3s;
         }
-        .title {
-            font-size: 45px;
-            margin: 10px 0;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-            font-family: 'Times New Roman', Times, serif;
-            font-weight: bold;
+
+        .login-button:hover {
+            background-color: #0056b3;
         }
+
+        .hidden {
+            display: none;
+        }
+
         .password-container {
             margin-top: 20px;
         }
-        input[type="password"],
-        input[type="text"] {
+
+        input[type="password"] {
             padding: 10px;
-            border: none;
-            border-radius: 5px;
-            width: 200px;
-            margin: 5px 0;
-        }
-        button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            background-color: #f16f047c;
-            color: white;
-            cursor: pointer;
-            margin-left: 10px;
-        }
-        button:hover {
-            background-color: #b7460034;
-        }
-        .message-box {
-            border: 2px solid green;
-            border-radius: 5px; 
-            padding: 10px;
-            margin-top: 20px;
-            display: none;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0);
-        }
-        .hammer-animation {
-            display: none;
-            font-size: 50px;
-            animation: hammer 1s infinite;
-        }
-        @keyframes hammer {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0); }
-        }
-        .reset-ip-container {
-            display: none;
-            margin-top: 20px;
-            text-align: left;
-        }
-        .help-button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            background-color: #d076005f;
-            color: white;
-            cursor: pointer;
-        }
-        .help-button:hover {
-            background-color: #f48a00;
-        }
-        #helpVideo {
-            margin-top: 20px;
-            display: none;
-            width: 80%;
-            max-width: 600px;
-        }
-        .title-container {
-    position: relative;
-    display: inline-block;
-}
-
-.title {
-    font-size: 45px;
-    margin: 10px 0;
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bold;
-    color: #925d07; /* Cor do texto */
-    text-shadow: 
-        2px 2px 4px rgba(214, 8, 8, 0.7), 
-        0 0 15px rgba(255, 255, 255, 0); /* Sombras */
-    position: relative; /* Para a sombra se posicionar corretamente */
-    overflow: hidden; /* Para esconder o overflow do brilho */
-}
-
-.title::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%; /* Começa fora à esquerda */
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, rgba(252, 6, 6, 0) 0%, rgba(0, 0, 0, 0.415) 50%, rgba(255, 255, 255, 0) 100%);
-    animation: shine 2s infinite; /* Animação da luz */
-    z-index: 1; /* Fica acima do texto */
-}
-
-@keyframes shine {
-    0% {
-        left: -100%; /* Começa fora à esquerda */
-    }
-    100% {
-        left: 100%; /* Move para fora à direita */
-    }
-}
-#chatBtn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25d366;
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 15px;
             font-size: 16px;
-            cursor: pointer;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        #chatBtn:hover {
-            background-color: #1ebd58;
-        }
-
-        .chat-popup {
-            display: none;
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            width: 300px;
-            max-width: 100%;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            background-image: url('https://www.example.com/whatsapp-texture.png'); /* URL da textura */
-            background-size: cover;
-        }
-
-        .chat-header {
-            background-color: #25d366;
-            color: white;
-            padding: 10px;
-            border-radius: 10px 10px 0 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .chat-body {
-            padding: 10px;
-            height: 200px;
-            overflow-y: auto;
-            background-color: #f1f1f1;
-        }
-
-        .chat-footer {
-            padding: 10px;
-            background-color: #f9f9f9;
-            border-radius: 0 0 10px 10px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .chat-message {
-            background-color: #dcf8c6;
-            padding: 8px 10px;
             border-radius: 5px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .chat-message img {
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
-        }
-
-        .chat-message.responsavel {
-            background-color: #e1ffc7;
-            border-radius: 10px; /* Arredondar a borda do quadro do responsável */
-            display: flex;
-            align-items: center;
-        }
-
-        .chat-message.responsavel img {
-            margin-left: 10px;
-            width: 30px; /* Ajuste o tamanho da logo aqui */
-            height: 30px; /* Ajuste o tamanho da logo aqui */
-        }
-
-        .loading {
-            display: none;
-            margin-left: 10px;
-            animation: loadingAnimation 1s infinite;
-        }
-
-        @keyframes loadingAnimation {
-            0% { opacity: 0; }
-            50% { opacity: 1; }
-            100% { opacity: 0; }
-        }
-
-        .chat-footer input {
-            padding: 10px;
             border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .chat-footer button {
-            background-color: #25d366;
-            color: white;
-            border: none;
-            padding: 10px 15px;
             margin-top: 10px;
-            border-radius: 5px;
+        }
+
+        button[type="button"] {
+            padding: 10px 20px;
+            margin-top: 10px;
             cursor: pointer;
-        }
-
-        .chat-footer button:hover {
-            background-color: #1ebd58;
-        }
-
-        .suggestions {
-            max-height: 100px;
-            overflow-y: auto;
-            background-color: white;
-            border: 1px solid #ccc;
+            background-color: #28a745;
+            border: none;
             border-radius: 5px;
-            margin-top: 5px;
+            color: white;
+            transition: background-color 0.3s;
         }
 
-        .suggestion-item {
-            padding: 5px;
-            cursor: pointer;
-        }
-
-        .suggestion-item:hover {
-            background-color: #f1f1f1;
+        button[type="button"]:hover {
+            background-color: #218838;
         }
     </style>
 </head>
 <body>
+    <div class="logo">
+        <img src="https://i.ibb.co/R6p4064/image.png" alt="logo" width="100">
+    </div>
 
-   
-    
-    <img src="https://i.ibb.co/TkjdDwN/baixados.png" alt="Logo Principal" class="logo" onclick="showResetIPBox()">
-    <img class="logo1" src="https://i.ibb.co/C73w9kv/image-removebg-preview-21.png" alt="Logo1"  style="opacity: 0.8;"alt="Imagem de Fundo" class="background-image">
-    <div class="title">TESTE DE ADMISSÃO</div>
-
-    <div class="password-container">
-        <button onclick="showFields()">Gerar Senha de Acesso</button>
-        <div id="inputFields" style="display: none;">
-            <input type="text" id="name" placeholder="Nome do candidato">
-            <input type="text" id="role" placeholder="Função que deseja concorrer">
-        </div>
-        <div id="loginFields" style="display: none;">
-            <input type="password" id="password" placeholder="Digite sua senha">
-            <button onclick="checkPassword()">Entrar</button>
+    <h1> Apropriação 4ºbec</h1>
+    <div class="container">
+        <button class="login-button" onclick="showPasswordInput()">Login de Acesso</button>
+        
+        <div id="password-container" class="hidden password-container">
+            <input type="password" id="password" placeholder="Digite sua senha" />
+            <button type="button" onclick="checkPassword()">Entrar</button>
         </div>
     </div>
 
-    <div class="reset-ip-container" id="resetIPContainer">
-        <h3>Resetar IP</h3>
-        <input type="text" id="resetIP" placeholder="Digite o IP para resetar">
-        <input type="password" id="resetPassword" placeholder="Digite a senha para resetar">
-        <button onclick="resetIP()">Resetar IP</button>
-    </div>
-
-    <div class="message-box" id="messageBox"></div>
-    <div class="hammer-animation" id="hammerAnimation">✅</div>
-
-    <audio id="hammerSound" src="batida.mp3" preload="auto"></audio>
-
-    <!-- Botão 'Preciso de ajuda' -->
-    <button class="help-button" onclick="showHelp()">Preciso de ajuda</button>
-    <iframe id="helpVideo" width="560" height="315" style="display:none;" frameborder="0" allowfullscreen></iframe>
-
-    <button id="chatBtn">Falar com um responsável</button>
-    <div id="chatPopup" class="chat-popup">
-        <div class="chat-header">
-            <img src="https://i.ibb.co/TkjdDwN/baixados.png" alt="Foto do responsável" style="width: 30px; height: 30px;">
-            <span>Chat com o responsável</span>
-            <button id="closeBtn" style="background: none; border: none; color: white;">&times;</button>
-        </div>
-        <div class="chat-body" id="chatBody">
-            <!-- Mensagens aparecem aqui -->
-        </div>
-        <div class="chat-footer">
-            <input type="text" id="chatInput" placeholder="Escreva sua pergunta...">
-            <div id="suggestions" class="suggestions"></div>
-            <button id="sendBtn">Enviar</button>
-        </div>
-    </div>
     <script>
-        let generatedPassword = "";
-        let userIP = "";
-
-        function showResetIPBox() {
-            document.getElementById("resetIPContainer").style.display = "block";
-        }
-
-        function showFields() {
-            document.getElementById("inputFields").style.display = "block";
-            document.getElementById("loginFields").style.display = "none";
-            document.querySelector(".password-container button").onclick = generatePassword;
-        }
-
-        async function getIPAddress() {
-            const response = await fetch("https://api.ipify.org?format=json");
-            const data = await response.json();
-            return data.ip;
-        }
-
-        function checkLastGeneration(ip) {
-            const lastGeneration = localStorage.getItem(`lastGeneration_${ip}`);
-            if (lastGeneration) {
-                const now = new Date().getTime();
-                const diff = now - lastGeneration;
-                if (diff < 48 * 60 * 60 * 1000) {
-                    alert("Uma senha já foi gerada para este IP nas últimas 48 horas.");
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        async function generatePassword() {
-            const name = document.getElementById("name").value;
-            const role = document.getElementById("role").value;
-
-            if (!name || !role) {
-                alert("Por favor, preencha seu nome e função.");
-                return;
-            }
-
-            userIP = await getIPAddress();
-
-            if (role.toLowerCase() !== "chefegeral" && !checkLastGeneration(userIP)) {
-                return;
-            }
-
-            const letters = "⋭ ⋮ ⋯ ⋰ ⋱ ⋲ ⋳ ⋴ ⋵ ⋶ ⋷ ⋸ ⋹ ⋺ ⋻ ⋼ ⋽ ⋾YZ";
-            const numbers = " ˌ ˍ ˎ ˏ ˑ ˒ ˓ ˔ ˕ ˖ ˗ ˘ ˙ ˚ ˛ ˜ ˝ ˝ ˟ ˠ ˡ ˢ";
-            const specialChars = " ∳ ∴ ∵ ∶ ∷ ∸ ∹ ∺ ";
-            let password = "";
-
-            for (let i = 0; i < 4; i++) {
-                password += letters.charAt(Math.floor(Math.random() * letters.length));
-            }
-            for (let i = 0; i < 3; i++) {
-                password += numbers.charAt(Math.floor(Math.random() * numbers.length));
-            }
-            for (let i = 0; i < 3; i++) {
-                password += specialChars.charAt(Math.floor(Math.random() * specialChars.length));
-            }
-
-            generatedPassword = password;
-            const now = new Date();
-            const dateTime = now.toLocaleString('pt-BR');
-            const message = ` :key: **NOVA SENHA GERADA** :key:  \nOlá ${role} **${name}**, tudo bem?\nData e Hora: ${dateTime}\nSeu IP: ${userIP}\nA sua senha de acesso será \`\`\`${password}\`\`\`\n`;
-
-            // Envio do relatório com IP
-            sendPasswordToDiscord(message, true); // Enviar com IP
-
-            if (role.toLowerCase() !== "chefegeral") {
-                localStorage.setItem(`lastGeneration_${userIP}`, new Date().getTime());
-            }
-
-            document.getElementById("hammerAnimation").style.display = "block";
-            document.getElementById("hammerSound").play();
-            document.getElementById("messageBox").innerText = `Senha enviada! Seu IP: ${userIP}`;
-            document.getElementById("messageBox").style.display = "block";
-            setTimeout(() => {
-                document.getElementById("hammerAnimation").style.display = "none";
-            }, 2000);
-            document.getElementById("loginFields").style.display = "block";
-        }
-
-        function sendPasswordToDiscord(message, withIP) {
-            const webhookUrlWithIP = "https://discordapp.com/api/webhooks/1287269272984485960/1EG9brRXWG5hYym8htIEgA6xfr16-TcOLBviE_MfVfRb1yzt8EZv6J2pkB2BWDGNDTSJ";
-            const webhookUrlWithoutIP = "https://discordapp.com/api/webhooks/1287266654941741149/MLJgHYu9utvncxksBLZFsafkIdCZbewQPpY6dGTykLJnVgcsjzwRzxCadpMV2DH0VXWL";
-
-            const payload = {
-                content: message,
-                username: "Relatório de Senha"
-            };
-
-            const url = withIP ? webhookUrlWithIP : webhookUrlWithoutIP;
-
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(payload)
-            })
-            .then(response => {
-                if (!response.ok) {
-                    console.error("Erro ao enviar mensagem para o Discord:", response.statusText);
-                }
-            })
-            .catch(error => {
-                console.error("Erro ao enviar mensagem para o Discord:", error);
-            });
+        function showPasswordInput() {
+            document.getElementById('password-container').classList.remove('hidden');
         }
 
         function checkPassword() {
-    const password = document.getElementById("password").value;
-    if (password === generatedPassword) {
-        document.getElementById("messageBox").innerText = `Acesso concedido, ${document.getElementById("name").value}!`;
-        document.getElementById("messageBox").style.display = "block";
-        
-        // Redireciona após 2 segundos
-        setTimeout(() => {
-            window.location.href = 'prova.html';
-        }, 1000);
-    } else {
-        alert("Senha incorreta!");
-    }
-}
+            const validPasswords = ['borges123', 'j456', 'monta789', '795'];
+            const passwordInput = document.getElementById('password').value;
 
-
-        function resetIP() {
-    const resetIPValue = document.getElementById("resetIP").value;
-    const resetPassword = document.getElementById("resetPassword").value;
-    const validPasswords = ["123", "456", "789", "654", "785"];
-
-    console.log("Senha inserida:", resetPassword);
-    console.log("Senhas válidas:", validPasswords);
-
-    if (validPasswords.includes(resetPassword)) {
-        localStorage.removeItem(`lastGeneration_${resetIPValue}`);
-        const message = `:warning: **RESET DE IP DETECTADO** :warning:  
-\`\`\` 
-O IP ${resetIPValue} foi resetado através da senha 
-Senha: ${resetPassword} 
-\`\`\` 
- @everyone`;
-        sendPasswordToDiscord(message);
-        alert("IP resetado com sucesso!");
-    } else {
-        alert("Senha inválida! Tente novamente.");
-    }
-}
-
-
-function showHelp() {
-    const helpVideo = document.getElementById("helpVideo");
-    if (helpVideo.style.display === "none" || helpVideo.style.display === "") {
-        helpVideo.style.display = "block";
-        helpVideo.src = "https://www.youtube.com/embed/crTL4Vs23Bo"; // Coloque o ID do vídeo no formato embed
-    } else {
-        helpVideo.style.display = "none";
-        helpVideo.src = "";
-    }
-}
-    const chatBtn = document.getElementById("chatBtn");
-        const chatPopup = document.getElementById("chatPopup");
-        const closeBtn = document.getElementById("closeBtn");
-        const chatBody = document.getElementById("chatBody");
-        const chatInput = document.getElementById("chatInput");
-        const sendBtn = document.getElementById("sendBtn");
-        const suggestionsDiv = document.getElementById("suggestions");
-
-        // Alternar a exibição da caixa de chat
-        chatBtn.addEventListener("click", () => {
-            chatPopup.style.display = chatPopup.style.display === "block" ? "none" : "block";
-        });
-
-        // Fechar a caixa de chat
-        closeBtn.addEventListener("click", () => {
-            chatPopup.style.display = "none";
-            clearSuggestions();
-        });
-
-        sendBtn.addEventListener("click", () => {
-            const message = chatInput.value;
-            if (message.trim() !== "") {
-                addMessage("Você: " + message);
-                chatInput.value = ""; // Limpar campo de entrada
-                clearSuggestions();
-                setTimeout(() => {
-                    const reply = autoReply(message);
-                    addMessage("Responsável: " + reply, true); // Passa true para a resposta do responsável
-                }, 1000); // Simula um tempo de resposta da IA
-            }
-        });
-
-        chatInput.addEventListener("input", () => {
-            const inputValue = chatInput.value.toLowerCase();
-            clearSuggestions();
-            if (inputValue) {
-                const suggestions = getSuggestions(inputValue);
-                if (suggestions.length > 0) {
-                    displaySuggestions(suggestions);
-                }
-            }
-        });
-        // Função para adicionar mensagens ao chat
-        function addMessage(text, isResponsavel = false) {
-            const messageDiv = document.createElement("div");
-            messageDiv.classList.add("chat-message");
-            if (isResponsavel) {
-                messageDiv.classList.add("responsavel");
-                messageDiv.innerHTML = `<img src="https://i.ibb.co/TkjdDwN/baixados.png" alt="Foto do responsável" style="width: 30px; height: 30px;"> ${text}`;
+            if (validPasswords.includes(passwordInput)) {
+                window.location.href = 'ect.html'; // Redireciona para a página index.html
             } else {
-                messageDiv.textContent = text;
+                alert('Senha incorreta. Tente novamente.'); // Mensagem de erro
             }
-            chatBody.appendChild(messageDiv);
-            chatBody.scrollTop = chatBody.scrollHeight;
         }
-
-        // Perguntas e respostas
-        const qaPairs = [
-        { question: "Como faço para me inscrever no concurso?", answer: "Inscreva-se através do nosso sistema de admissão por meio do site." },
-{ question: "Quais cargos estão disponíveis no concurso?", answer: "Os cargos disponíveis incluem advogado, promotor, desembargador, oficial de justiça e tabelião." },
-{ question: "Preciso gerar uma senha?", answer: "Você precisa gerar uma senha de acesso." },
-{ question: "Como posso gerar a senha de acesso?", answer: "Clique no botão 'Gerar senha de acesso' no site." },
-{ question: "A senha está vinculada ao meu IP?", answer: "Sim, a senha está vinculada ao seu endereço de IP." },
-{ question: "Onde receberei minha senha?", answer: "A senha será enviada no canal do Discord 'token-concurso'." },
-{ question: "O que fazer se não recebi minha senha?", answer: "Entre em contato com um responsável do setor judiciário." },
-{ question: "Como posso solicitar uma nova senha?", answer: "Solicite um novo envio ou reset da senha a um responsável." },
-{ question: "Onde posso pedir ajuda?", answer: "Você pode solicitar a senha na call de suporte do judiciário." },
-{ question: "Qual o horário recomendado para solicitar a senha?", answer: "Entre 19h e 22h, durante os horários de pico." },
-{ question: "Quando serei notificado para a entrevista?", answer: "Você será notificado para agendar uma entrevista." },
-{ question: "Como é o sistema de avaliação?", answer: "O sistema é baseado em concursos e meritocracia." },
-{ question: "Posso gerar outra senha após 48 horas?", answer: "Espere 48 horas para gerar outra senha." },
-{ question: "Posso gerar uma nova senha a qualquer momento?", answer: "Você não poderá gerar outra senha por um período determinado." },
-{ question: "A prova pode ser reprogramada?", answer: "Não, a prova será liberada após autorização de um responsável." },
-{ question: "Qual o objetivo da prova?", answer: "A maior quantidade de acertos no menor tempo possível." },
-{ question: "Há custo para participar do concurso?", answer: "Não, não há custo para participar do concurso." },
-{ question: "Há limite de tentativas?", answer: "Não, não existe limite máximo de tentativas." },
-{ question: "As questões são geradas aleatoriamente?", answer: "Não, as questões são geradas de forma aleatória." },
-{ question: "O que significa 'Tempo de Nárnia'?", answer: "Refere-se a um prazo específico, geralmente um tempo simbólico." },
-{ question: "Quem são os responsáveis pelo concurso?", answer: "Os responsáveis são Kakashi, Safira, Gyga e Tangeria." },
-{ question: "Há alguma juíza na equipe?", answer: "A Juíza Bárbara é a única juíza da equipe." },
-{ question: "Como posso ser promovido?", answer: "Participe de novos concursos para ser promovido." },
-{ question: "Preciso fazer o concurso para todos os cargos?", answer: "Você deve passar pela prova de admissão para ambos." },
-{ question: "A prova é obrigatória para todos os cargos?", answer: "Sim, é necessário fazer o concurso para todos os cargos." },
-{ question: "Quando a prova é realizada?", answer: "A prova é realizada após a geração da senha e autorização." },
-{ question: "Posso solicitar a senha a qualquer momento?", answer: "Sim, você pode solicitar a senha em qualquer horário." },
-{ question: "Como posso obter ajuda em caso de problemas?", answer: "Vá para a call de suporte da prefeitura se necessário." },
-{ question: "Como garantir meu acesso?", answer: "Seguindo as orientações do responsável e sendo honesto." },
-{ question: "Como é garantida a segurança do concurso?", answer: "Utilizando um sistema lógico que minimiza as chances de fraude." },
-{ question: "A senha é temporária?", answer: "A senha é temporária e vinculada ao seu IP." },
-{ question: "Como posso recuperar minha senha?", answer: "Entre em contato com o suporte para reobter sua senha." },
-{ question: "Como me preparar para a prova?", answer: "Prepare-se com antecedência e estude as regras do concurso." },
-{ question: "Quando serei notificado sobre a liberação da senha?", answer: "O responsável informará quando sua senha for liberada." },
-{ question: "A prova pode ser reprogramada?", answer: "Não, a prova ocorre em datas específicas." },
-{ question: "As questões são diferentes a cada prova?", answer: "A randomização garante que as questões sejam diferentes." },
-{ question: "Por que a senha é criptografada?", answer: "A senha criptografada protege o acesso à prova." },
-{ question: "Posso ter acesso à lista de verificação?", answer: "Não há lista de verificação disponível." },
-{ question: "A prova pode ser reprogramada após agendamento?", answer: "A prova não pode ser reprogramada após o agendamento." },
-{ question: "Quando saberei sobre a liberação da senha?", answer: "O responsável informará quando sua senha for liberada." },
-{ question: "O que acontece após a prova?", answer: "Você receberá informações sobre o próximo passo." },
-{ question: "Haverá feedback após a prova?", answer: "Não é garantido feedback após a prova." },
-{ question: "Qual a consequência de fraudes no concurso?", answer: "As fraudes resultam em desqualificação imediata." },
-{ question: "Quando posso agendar a entrevista?", answer: "O agendamento é feito após a aprovação na prova." },
-{ question: "A prova pode ter diferentes níveis de dificuldade?", answer: "Sim, a prova pode ter diferentes níveis de dificuldade." },
-{ question: "Quem ajuda na organização do concurso?", answer: "Eles ajudam na organização e supervisão do concurso." },
-{ question: "Como agir em caso de emergência?", answer: "Siga as instruções do responsável em caso de emergência." },
-{ question: "Como participar do concurso?", answer: "Para participar do concurso, você deve solicitar uma senha e seguir os procedimentos de inscrição." },
-{ question: "Sim, a inscrição é feita online através do site.", answer: "Sim, a inscrição é feita online através do site." },
-{ question: "Você pode solicitar uma senha clicando no botão 'Gerar senha de acesso'.", answer: "Você pode solicitar uma senha clicando no botão 'Gerar senha de acesso'." },
-{ question: "Sim, a senha é necessária para acessar a prova.", answer: "Sim, a senha é necessária para acessar a prova." },
-{ question: "Sim, a senha é gerada imediatamente após a solicitação.", answer: "Sim, a senha é gerada imediatamente após a solicitação." },
-{ question: "Você receberá sua senha no canal 'token-concurso' no Discord.", answer: "Você receberá sua senha no canal 'token-concurso' no Discord." },
-{ question: "Não, você não pode gerar uma nova senha a qualquer momento, pois ela está vinculada ao seu IP.", answer: "Não, você não pode gerar uma nova senha a qualquer momento, pois ela está vinculada ao seu IP." },
-{ question: "Sim, a senha está vinculada ao seu endereço de IP.", answer: "Sim, a senha está vinculada ao seu endereço de IP." },
-{ question: "Entre em contato com um responsável do setor judiciário para redefinir sua senha.", answer: "Entre em contato com um responsável do setor judiciário para redefinir sua senha." },
-{ question: "O canal 'token-concurso' é onde você receberá sua senha e informações sobre a prova.", answer: "O canal 'token-concurso' é onde você receberá sua senha e informações sobre a prova." },
-{ question: "Você pode entrar em contato pelo suporte do judiciário ou na call de suporte.", answer: "Você pode entrar em contato pelo suporte do judiciário ou na call de suporte." },
-{ question: "Você pode solicitar a senha a qualquer momento, mas é recomendável em horários de pico.", answer: "Você pode solicitar a senha a qualquer momento, mas é recomendável em horários de pico." },
-{ question: "Sim, a entrevista é obrigatória após a prova para os aprovados.", answer: "Sim, a entrevista é obrigatória após a prova para os aprovados." },
-{ question: "O responsável do setor judiciário agendará a sua entrevista.", answer: "O responsável do setor judiciário agendará a sua entrevista." },
-{ question: "Para garantir seu acesso, siga todos os procedimentos e gere sua senha.", answer: "Para garantir seu acesso, siga todos os procedimentos e gere sua senha." },
-{ question: "Sim, a prova será disponibilizada após a autorização do responsável.", answer: "Sim, a prova será disponibilizada após a autorização do responsável." },
-{ question: "Sim, é necessário gerar a senha para acessar a prova.", answer: "Sim, é necessário gerar a senha para acessar a prova." },
-{ question: "A falta de honestidade resulta em desqualificação.", answer: "A falta de honestidade resulta em desqualificação." },
-{ question: "Após a prova, siga as instruções do responsável para receber o feedback.", answer: "Após a prova, siga as instruções do responsável para receber o feedback." },
-{ question: "As decisões finais são tomadas pela equipe de juristas envolvidos.", answer: "As decisões finais são tomadas pela equipe de juristas envolvidos." },
-{ question: "Sim, você pode revisar suas respostas antes de finalizar.", answer: "Sim, você pode revisar suas respostas antes de finalizar." },
-{ question: "A avaliação final é feita pelos responsáveis após a prova.", answer: "A avaliação final é feita pelos responsáveis após a prova." },
-{ question: "As mudanças são feitas para garantir a equidade entre os participantes.", answer: "As mudanças são feitas para garantir a equidade entre os participantes." },
-{ question: "Você pode acompanhar o andamento pelo site e pelo Discord.", answer: "Você pode acompanhar o andamento pelo site e pelo Discord." },
-{ question: "É recomendável estudar as regras do concurso e a legislação vigente.", answer: "É recomendável estudar as regras do concurso e a legislação vigente." },
-{ question: "Não há garantia de retorno sobre o pedido de anulação da prova.", answer: "Não há garantia de retorno sobre o pedido de anulação da prova." },
-{ question: "Se a prova não for realizada, o candidato deve solicitar uma nova oportunidade.", answer: "Se a prova não for realizada, o candidato deve solicitar uma nova oportunidade." },
-{ question: "A pontuação varia conforme as regras de cada concurso.", answer: "A pontuação varia conforme as regras de cada concurso." },
-{ question: "Sim, o responsável pode oferecer um curso preparatório.", answer: "Sim, o responsável pode oferecer um curso preparatório." },
-{ question: "As regras da prova são claras e comunicadas aos participantes.", answer: "As regras da prova são claras e comunicadas aos participantes." },
-{ question: "As respostas devem ser apresentadas de forma clara e objetiva.", answer: "As respostas devem ser apresentadas de forma clara e objetiva." },
-{ question: "Os critérios de avaliação são transparentes e estão disponíveis para consulta.", answer: "Os critérios de avaliação são transparentes e estão disponíveis para consulta." },
-{ question: "É importante garantir a segurança e a confidencialidade do seu acesso.", answer: "É importante garantir a segurança e a confidencialidade do seu acesso." },
-{ question: "Sim, você pode revisar suas respostas antes de finalizar.", answer: "Sim, você pode revisar suas respostas antes de finalizar." },
-{ question: "As decisões finais são tomadas pela equipe de juristas envolvidos.", answer: "As decisões finais são tomadas pela equipe de juristas envolvidos." }
-        ];
-
-        function autoReply(message) {
-            const pair = qaPairs.find(item => message.toLowerCase().includes(item.question.toLowerCase()));
-            return pair ? pair.answer : "Desculpe, não entendi sua pergunta.";
-        }
-
-        function clearSuggestions() {
-            suggestionsDiv.innerHTML = "";
-            suggestionsDiv.style.display = "none";
-        }
-
-        function getSuggestions(inputValue) {
-            return qaPairs
-                .map(pair => pair.question)
-                .filter(question => question.toLowerCase().includes(inputValue));
-        }
-
-        function displaySuggestions(suggestions) {
-            suggestionsDiv.innerHTML = suggestions.map(s => `<div class="suggestion-item">${s}</div>`).join("");
-            suggestionsDiv.style.display = "block";
-
-            // Adicionar evento de clique nas sugestões
-            const suggestionItems = document.querySelectorAll(".suggestion-item");
-            suggestionItems.forEach(item => {
-                item.addEventListener("click", () => {
-                    chatInput.value = item.textContent;
-                    clearSuggestions();
-                });
-            });
-}
-
     </script>
 </body>
 </html>

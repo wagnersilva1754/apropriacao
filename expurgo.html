@@ -1,0 +1,257 @@
+
+<!DOCTYPE html> 
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4º Batalhão de Engenharia de Construção - Operação Novo HMAB</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, rgb(27, 27, 95), rgb(33, 11, 175));
+            color: white;
+            text-align: center;
+            background-image: url('https://i.ibb.co/GPnYChj/Whats-App-Image-2024-10-10-at-10-31-02.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .container {
+            padding: 20px;
+        }
+        h1 {
+            margin-top: 10px;
+            font-size: 24px;
+        }
+        .buttons {
+            margin-top: 30px;
+        }
+        .buttons button {
+            margin: 10px;
+            padding: 15px 25px;
+            font-size: 16px;
+            border-radius: 95px;
+            border: none;
+            cursor: pointer;
+            color: white;
+            background-color: #007bff;
+            transition: background-color 0.3s;
+        }
+        .buttons button:hover {
+            background-color: #0056b3;
+        }
+        .hidden-menu {
+            display: none;
+            margin-top: 20px;
+        }
+        .quadros-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 90px;
+        }
+        .quadro {
+            background-color: black;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+            margin: 10px;
+            flex: 1 1 300px; /* Faz os quadros se ajustarem ao tamanho da tela */
+            max-width: 400px; /* Limita a largura máxima de cada quadro */
+        }
+        h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        .counter {
+            font-size: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .counter div {
+            flex: 1;
+            text-align: left;
+            padding-left: 10px;
+        }
+        .counter button {
+            padding: 5px 15px;
+            font-size: 18px;
+            color: white;
+            background-color: #28a745;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .counter button.minus {
+            background-color: #dc3545;
+        }
+
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 20px;
+            }
+            .buttons button {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+            .quadro {
+                max-width: 100%; /* Garante que os quadros ocupem toda a largura em telas pequenas */
+                margin: 10px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 18px;
+            }
+            .buttons button {
+                font-size: 12px;
+                padding: 8px 15px;
+            }
+            .counter button {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="https://i.ibb.co/R6p4064/image.png" alt="logo" width="85">
+        <h1>4º Batalhão de Engenharia de Construção<br>Operação Novo HMAB</h1>
+        
+        <div class="buttons">
+            <button onclick="redirectToect()">Ect</button>
+            <button onclick="redirectToCompactacao()">Compactação</button>
+            <button onclick="toggleMenu('expurgo-menu')">Expurgo</button>
+            
+        </div>
+
+        <div id="expurgo-menu" class="hidden-menu">
+            <div class="quadros-container">
+                <!-- Quadro 1 -->
+                <div class="quadro">
+                    <h2>Contadores de CB - Quadro 1:</h2>
+                    <div class="counter" id="CB-00579">
+                        <div>CB-00579:</div>
+                        <button onclick="sendReport('CB-00579', 1)">[+]</button> 0 <button class="minus" onclick="sendReport('CB-00579', -1)">[-]</button>
+                    </div>
+                    <div class="counter" id="CB-00662">
+                        <div>CB-00662:</div>
+                        <button onclick="sendReport('CB-00662', 1)">[+]</button> 50 <button class="minus" onclick="sendReport('CB-00662', -1)">[-]</button>
+                    </div>
+                    <div class="counter" id="CB-00660">
+                        <div>CB-00660:</div>
+                        <button onclick="sendReport('CB-00660', 1)">[+]</button> 0 <button class="minus" onclick="sendReport('CB-00660', -1)">[-]</button>
+                    </div>
+                    <div class="counter" id="CB-00659">
+                        <div>CB-00659:</div>
+                        <button onclick="sendReport('CB-00659', 1)">[+]</button> 0 <button class="minus" onclick="sendReport('CB-00659', -1)">[-]</button>
+                    </div>
+                    <div class="counter" id="CB-00580">
+                        <div>CB-00580:</div>
+                        <button onclick="sendReport('CB-00580', 1)">[+]</button> 0 <button class="minus" onclick="sendReport('CB-00580', -1)">[-]</button>
+                    </div>
+                </div>
+
+                <!-- Quadro 2 -->
+                <div class="quadro">
+                    <h2>Contadores de CB - Quadro 2:</h2>
+                    <div class="counter" id="CB-00591">
+                        <div>CB-00591:</div>
+                        <button onclick="sendReport('CB-00591', 1)">[+]</button> 0 <button class="minus" onclick="sendReport('CB-00591', -1)">[-]</button>
+                    </div>
+                    <div class="counter" id="CB-00595">
+                        <div>CB-00595:</div>
+                        <button onclick="sendReport('CB-00595', 1)">[+]</button> 5 <button class="minus" onclick="sendReport('CB-00595', -1)">[-]</button>
+                    </div>
+                    <div class="counter" id="CB-00658">
+                        <div>CB-00658:</div>
+                        <button onclick="sendReport('CB-00658', 1)">[+]</button> 0 <button class="minus" onclick="sendReport('CB-00658', -1)">[-]</button>
+                    </div>
+                    <div class="counter" id="CB-00640">
+                        <div>CB-00640:</div>
+                        <button onclick="sendReport('CB-00640', 1)">[+]</button> 10 <button class="minus" onclick="sendReport('CB-00640', -1)">[-]</button>
+                    </div>
+                    <div class="counter" id="CB-00644">
+                        <div>CB-00644:</div>
+                        <button onclick="sendReport('CB-00644', 1)">[+]</button> 0 <button class="minus" onclick="sendReport('CB-00644', -1)">[-]</button>
+                    </div>
+                </div>
+
+                <!-- Quadro 3 -->
+                <div class="quadro">
+                    <h2>Contadores de CB - Quadro 3:</h2>
+                    <div class="counter" id="CB-00661">
+                        <div>CB-00661:</div>
+                        <button onclick="sendReport('CB-00661', 1)">[+]</button> 0 <button class="minus" onclick="sendReport('CB-00661', -1)">[-]</button>
+                    </div>
+                    <div class="counter" id="CB-00589">
+                        <div>CB-00589:</div>
+                        <button onclick="sendReport('CB-00589', 1)">[+]</button> 0 <button class="minus" onclick="sendReport('CB-00589', -1)">[-]</button>
+                    </div>
+                    <div class="counter" id="CB-00594">
+                        <div>CB-00594:</div>
+                        <button onclick="sendReport('CB-00594', 1)">[+]</button> 0 <button class="minus" onclick="sendReport('CB-00594', -1)">[-]</button>
+                    </div>
+                    <div class="counter" id="CB-00657">
+                        <div>CB-00657:</div>
+                        <button onclick="sendReport('CB-00657', 1)">[+]</button> 0 <button class="minus" onclick="sendReport('CB-00657', -1)">[-]</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu(menuId) {
+            const menu = document.getElementById(menuId);
+            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+        }
+        function redirectToect() {
+            window.location.href = "ect.html"; // Redireciona para a página "compactacao.html"
+        }
+        function redirectToCompactacao() {
+            window.location.href = "index.html"; // Redireciona para a página "compactacao.html"
+        }
+        function redirectToexpurgo() {
+            window.location.href = "expurgo.html"; // Redireciona para a página "compactacao.html"
+        }
+        function sendReport(counterId, value) {
+            // Formatação da mensagem
+            const operation = value > 0 ? 'ADICIONADO' : 'REMOVIDO';
+            const count = Math.abs(value); // Usa o valor absoluto para mostrar a quantidade
+
+            // Montagem dos dados a serem enviados
+            const data = {
+                content: `EXPURGO - ${counterId} - ${operation} [${count}]`,
+            };
+
+            // Envio da requisição para o webhook do Discord
+            fetch('https://discordapp.com/api/webhooks/1293891447002763334/rNbnbuTBI-2SJZjeczxPg-SUBQQFN40Jc_mfcFC5iNMBD7bLm-WTOX2ZtPgXRU7DJ5yP', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert(`Operação bem-sucedida: EXPURGO - ${counterId} - ${operation} [${count}]`);
+                } else {
+                    alert(`Erro ao enviar o contador ${counterId}. Tente novamente.`);
+                }
+            })
+            .catch(error => {
+                alert(`Erro ao enviar o contador ${counterId}: ${error.message}`);
+            });
+        }
+    </script>
+</body>
+</html>

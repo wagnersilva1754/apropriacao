@@ -55,8 +55,8 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
             margin: 10px;
-            flex: 1 1 300px; /* Faz os quadros se ajustarem ao tamanho da tela */
-            max-width: 400px; /* Limita a largura máxima de cada quadro */
+            flex: 1 1 300px;
+            max-width: 400px;
         }
         h2 {
             font-size: 20px;
@@ -100,7 +100,7 @@
                 padding: 10px 20px;
             }
             .quadro {
-                max-width: 100%; /* Garante que os quadros ocupem toda a largura em telas pequenas */
+                max-width: 100%;
                 margin: 10px 0;
             }
         }
@@ -128,79 +128,20 @@
         <div class="buttons">
             <button onclick="toggleMenu('ect-menu')">ECT</button>
             <button onclick="redirectToCompactacao()">Compactação</button>
-            <button onclick="redirectToexpurgo()">expurgo</button>
+            <button onclick="redirectToExpurgo()">Expurgo</button>
+            <button onclick="resetCounters()">Zerar Meta</button> <!-- Novo botão para zerar meta -->
         </div>
 
         <div id="ect-menu" class="hidden-menu">
             <div class="quadros-container">
-                <!-- Quadro 1 -->
+                <!-- Exemplo de Quadro de Contadores -->
                 <div class="quadro">
-                    <h2>Contadores de CB - Quadro 1:</h2>
-                    <div class="counter" id="CB-00579">
-                        <div>CB-00579:</div>
-                        <button onclick="sendReport('CB-00579', 1)">[+]</button> 0 <button class="minus" onclick="sendReport('CB-00579', -1)">[-]</button>
-                    </div>
+                    <h2>Contadores de CB - Mercedes:</h2>
                     <div class="counter" id="CB-00662">
-                        <div>CB-00662:</div>
-                        <button onclick="sendReport('CB-00662', 1)">[+]</button> 50 <button class="minus" onclick="sendReport('CB-00662', -1)">[-]</button>
-                    </div>
-                    <div class="counter" id="CB-00660">
-                        <div>CB-00660:</div>
-                        <button onclick="sendReport('CB-00660', 1)">[+]</button> 0 <button class="minus" onclick="sendReport('CB-00660', -1)">[-]</button>
-                    </div>
-                    <div class="counter" id="CB-00659">
-                        <div>CB-00659:</div>
-                        <button onclick="sendReport('CB-00659', 1)">[+]</button> 0 <button class="minus" onclick="sendReport('CB-00659', -1)">[-]</button>
-                    </div>
-                    <div class="counter" id="CB-00580">
-                        <div>CB-00580:</div>
-                        <button onclick="sendReport('CB-00580', 1)">[+]</button> 0 <button class="minus" onclick="sendReport('CB-00580', -1)">[-]</button>
-                    </div>
-                </div>
-
-                <!-- Quadro 2 -->
-                <div class="quadro">
-                    <h2>Contadores de CB - Quadro 2:</h2>
-                    <div class="counter" id="CB-00591">
-                        <div>CB-00591:</div>
-                        <button onclick="sendReport('CB-00591', 1)">[+]</button> 0 <button class="minus" onclick="sendReport('CB-00591', -1)">[-]</button>
-                    </div>
-                    <div class="counter" id="CB-00595">
-                        <div>CB-00595:</div>
-                        <button onclick="sendReport('CB-00595', 1)">[+]</button> 5 <button class="minus" onclick="sendReport('CB-00595', -1)">[-]</button>
-                    </div>
-                    <div class="counter" id="CB-00658">
-                        <div>CB-00658:</div>
-                        <button onclick="sendReport('CB-00658', 1)">[+]</button> 0 <button class="minus" onclick="sendReport('CB-00658', -1)">[-]</button>
-                    </div>
-                    <div class="counter" id="CB-00640">
-                        <div>CB-00640:</div>
-                        <button onclick="sendReport('CB-00640', 1)">[+]</button> 10 <button class="minus" onclick="sendReport('CB-00640', -1)">[-]</button>
-                    </div>
-                    <div class="counter" id="CB-00644">
-                        <div>CB-00644:</div>
-                        <button onclick="sendReport('CB-00644', 1)">[+]</button> 0 <button class="minus" onclick="sendReport('CB-00644', -1)">[-]</button>
-                    </div>
-                </div>
-
-                <!-- Quadro 3 -->
-                <div class="quadro">
-                    <h2>Contadores de CB - Quadro 3:</h2>
-                    <div class="counter" id="CB-00661">
-                        <div>CB-00661:</div>
-                        <button onclick="sendReport('CB-00661', 1)">[+]</button> 0 <button class="minus" onclick="sendReport('CB-00661', -1)">[-]</button>
-                    </div>
-                    <div class="counter" id="CB-00589">
-                        <div>CB-00589:</div>
-                        <button onclick="sendReport('CB-00589', 1)">[+]</button> 0 <button class="minus" onclick="sendReport('CB-00589', -1)">[-]</button>
-                    </div>
-                    <div class="counter" id="CB-00594">
-                        <div>CB-00594:</div>
-                        <button onclick="sendReport('CB-00594', 1)">[+]</button> 0 <button class="minus" onclick="sendReport('CB-00594', -1)">[-]</button>
-                    </div>
-                    <div class="counter" id="CB-00657">
-                        <div>CB-00657:</div>
-                        <button onclick="sendReport('CB-00657', 1)">[+]</button> 0 <button class="minus" onclick="sendReport('CB-00657', -1)">[-]</button>
+                        <div>CB-00662 (Mercedes):</div>
+                        <button onclick="updateCounter('CB-00662', 1)">[+]</button>
+                        <span id="count-CB-00662">0</span>
+                        <button class="minus" onclick="updateCounter('CB-00662', -1)">[-]</button>
                     </div>
                 </div>
             </div>
@@ -208,47 +149,78 @@
     </div>
 
     <script>
+        // Função para exibir ou ocultar o menu
         function toggleMenu(menuId) {
             const menu = document.getElementById(menuId);
-            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+            menu.style.display = menu.style.display === "none" ? "block" : "none";
         }
 
+        // Função para redirecionar para a página de Compactação
         function redirectToCompactacao() {
-            window.location.href = "index.html"; // Redireciona para a página "compactacao.html"
-        }
-        function redirectToexpurgo() {
-            window.location.href = "expurgo.html"; // Redireciona para a página "compactacao.html"
+            window.location.href = 'compactacao.html';
         }
 
-        function sendReport(counterId, value) {
-            // Formatação da mensagem
-            const operation = value > 0 ? 'ADICIONADO' : 'REMOVIDO';
-            const count = Math.abs(value); // Usa o valor absoluto para mostrar a quantidade
+        // Função para redirecionar para a página de Expurgo
+        function redirectToExpurgo() {
+            window.location.href = 'expurgo.html';
+        }
 
-            // Montagem dos dados a serem enviados
-            const data = {
-                content: `ECT - ${counterId} - ${operation} [${count}]`,
+        // Função para atualizar o contador e salvar o valor no localStorage
+        function updateCounter(counterId, increment) {
+            const countElement = document.getElementById(`count-${counterId}`);
+            let currentCount = parseInt(countElement.textContent, 10) || 0;
+            let newCount = currentCount + increment;
+            countElement.textContent = newCount;
+            localStorage.setItem(counterId, newCount); // Salva o novo valor no localStorage
+
+            sendWebhookReport(counterId, currentCount, increment); // Envia relatório ao Discord
+        }
+
+        // Função para enviar relatório ao Discord via Webhook
+        function sendWebhookReport(counterId, previousValue, increment) {
+            const webhookUrl = 'SEU_WEBHOOK_URL'; // Substitua pela URL do seu webhook
+            const currentTime = new Date().toLocaleTimeString();
+            const report = {
+                content: `Relatório de ${counterId}:\nValor anterior: ${previousValue}\nAlteração: ${increment}\nHorário: ${currentTime}`
             };
 
-            // Envio da requisição para o webhook do Discord
-            fetch('https://discordapp.com/api/webhooks/1293891447002763334/rNbnbuTBI-2SJZjeczxPg-SUBQQFN40Jc_mfcFC5iNMBD7bLm-WTOX2ZtPgXRU7DJ5yP', {
+            fetch(webhookUrl, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(data),
-            })
-            .then(response => {
-                if (response.ok) {
-                    alert(`Operação bem-sucedida: ECT - ${counterId} - ${operation} [${count}]`);
-                } else {
-                    alert(`Erro ao enviar o contador ${counterId}. Tente novamente.`);
-                }
-            })
-            .catch(error => {
-                alert(`Erro ao enviar o contador ${counterId}: ${error.message}`);
+                body: JSON.stringify(report)
             });
         }
+
+        // Função para resetar os contadores (só após as 18:30)
+        function resetCounters() {
+            const currentHour = new Date().getHours();
+            const currentMinutes = new Date().getMinutes();
+            if (currentHour >= 18 && currentMinutes >= 30) {
+                // Reseta todos os contadores
+                const counters = document.querySelectorAll('.counter span');
+                counters.forEach(counter => {
+                    counter.textContent = '0';
+                    localStorage.setItem(counter.id.replace('count-', ''), '0'); // Salva o valor resetado no localStorage
+                });
+
+                sendWebhookReport('Todos', 'Zerado', 0); // Envia relatório ao Discord informando que todos foram zerados
+            } else {
+                alert('Você só pode zerar após as 18:30.');
+            }
+        }
+
+        // Função para restaurar valores do localStorage ao carregar a página
+        window.onload = function() {
+            const counters = document.querySelectorAll('.counter span');
+            counters.forEach(counter => {
+                const savedValue = localStorage.getItem(counter.id.replace('count-', ''));
+                if (savedValue) {
+                    counter.textContent = savedValue;
+                }
+            });
+        };
     </script>
 </body>
 </html>

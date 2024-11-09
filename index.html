@@ -3,288 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4º Batalhão de Engenharia de Construção - Operação Novo HMAB</title>
+    <title>Site de Fofoca</title>
     <style>
+        /* Estilo do fundo em gradiente */
         body {
-            margin: 0;
+            background: linear-gradient(to bottom, #a9b5be, #0530ef);
             font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom, rgb(27, 27, 95), rgb(33, 11, 175));
-            color: white;
-            text-align: center;
-            background-image: url('https://i.ibb.co/GPnYChj/Whats-App-Image-2024-10-10-at-10-31-02.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-        .container {
-            padding: 20px;
-        }
-        h1 {
-            margin-top: 10px;
-            font-size: 24px;
-        }
-        .buttons {
-            margin-top: 30px;
-        }
-        .buttons button {
-            margin: 10px;
-            padding: 15px 25px;
-            font-size: 16px;
-            border-radius: 95px;
-            border: none;
-            cursor: pointer;
-            color: white;
-            background-color: #007bff;
-            transition: background-color 0.3s;
-        }
-        .buttons button:hover {
-            background-color: #0056b3;
-        }
-        .hidden-menu {
-            display: none;
-            margin-top: 20px;
-        }
-        .quadros-container {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            margin-top: 90px;
-        }
-        .quadro {
-            background-color: black;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-            margin: 10px;
-            flex: 1 1 300px;
-            max-width: 400px;
-        }
-        h2 {
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-        .counter {
-            font-size: 18px;
-            display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            margin-bottom: 10px;
-            background-color: #333;
-            padding: 10px;
-            border-radius: 8px;
+            margin: 0;
+            padding: 0;
+            color: #333;
         }
-        .counter div {
-            flex: 1;
-            text-align: left;
-            padding-left: 10px;
+
+        /* Ícones de redes sociais alinhados à direita */
+        .social-icons {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            display: flex;
+            gap: 20px;
         }
-        .counter button {
-            padding: 5px 15px;
-            font-size: 18px;
-            color: white;
-            background-color: #28a745;
-            border: none;
+
+        .social-icons img {
+            width: 32px;
+            height: 32px;
             cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
             border-radius: 5px;
+            padding: 5px;
         }
-        .counter button.minus {
-            background-color: #dc3545;
+
+        .social-icons img:hover {
+            transform: scale(1.1);
+            background-color: rgba(255, 182, 193, 0.2);
         }
-        #status-message {
+
+        /* Controle de altura e largura da logo */
+        .logo {
+            margin-top: 10px;
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* Linha de separação */
+        .line {
+            width: 100%;
+            height: 5px;
+            background-color: #0062da;
+            margin: 5px 0;
+        }
+
+        /* Estilo do menu */
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            font-weight: bold;
+            font-size: 18px;
+            color: #ff1493;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #eeeeee;
+            position: relative;
+            padding: 5px 10px;
+        }
+
+        .menu a:hover {
+            color: #03a8ef;
+        }
+
+        /* Banner */
+       /* Estilo do banner (slide) */
+    .banner-container {
+        position: relative;
+        width: 100%;
+        max-width:2000px;
+        height: 300px;
+        overflow: hidden;
+        margin-top: 10px;
+    }
+
+    .banner-slide {
+        display: flex;
+        width: 110%;
+        animation: slide 10s infinite;
+    }
+
+    .banner-slide img {
+        width: 50%;
+        object-fit: cover;
+    }
+
+    @keyframes slide {
+        0% {
+            transform: translateX(0);
+        }
+        50% {
+            transform: translateX(-50%);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+
+        /* Quadro de Principais Notícias */
+        .main-news {
+            width: 90%;
+            max-width: 800px;
             margin-top: 20px;
-            font-size: 16px;
-            color: #fff;
+            padding: 20px;
+            background-color: #ffffff58;
+            border-radius: -10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .main-news h2 {
+            color: #0055ff;
+        }
+
+        
+.main-news {
+    width: 90%;
+    max-width: 800px;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff0f5;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    align-self: flex-end; /* Alinha o conteúdo à direita */
+}
+
+
+.fofoca-container {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    gap: 20px;
+    justify-content: flex-start; /* Alinha os itens à esquerda */
+    margin-top: 20px;
+    transform: translateX(-70%) translateY(-180%); /* Move os quadros para a esquerda e para cima em 10% */
+}
+
+.fofoca-item {
+    width: 300px;
+    background-color: #fff0f0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: left;
+}
+
+.fofoca-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.fofoca-item h3 {
+    color: #545ee7;
+    margin-top: 10px;
+}
+
+.fofoca-item p {
+    font-size: 14px;
+    color: #555;
+}
+
+
+
+
+        /* Selo de autoria */
+        .author-seal {
+            margin-top: 40px;
+            font-size: 14px;
+            color: #777;
+            background-color: #ffebef;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+              /* Estilo das linhas azuis mais finas */
+       
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <img src="https://i.ibb.co/R6p4064/image.png" alt="logo" width="85">
-        <h1>4º Batalhão de Engenharia de Construção<br>Operação Novo HMAB</h1>
-        
-        <div class="buttons">
-            <button onclick="toggleMenu('ect-menu')">ECT</button>
-            <button onclick="resetMeta()">Zerar Meta</button>
-        </div>
-
-
-
-            
-
-        <div id="ect-menu" class="hidden-menu">
-            <div class="quadros-container">
-                <div class="quadro">
-                    <h2>Caminhão de 10m³:</h2>
-                    <div class="counter" id="CB-04">   
-                        <div>CB-04:</div>
-                        <button onclick="updateCounter('CB-04', 1)">[+]</button> 
-                        <span id="count-CB-04">0</span> 
-                        <button class="minus" onclick="updateCounter('CB-04', -1)">[-]</button>
-                    </div>
-                    <div class="counter" id="CB-03">
-                        <div>CB-03:</div>
-                        <button onclick="updateCounter('CB-03', 1)">[+]</button> 
-                        <span id="count-CB-03">0</span> 
-                        <button class="minus" onclick="updateCounter('CB-03', -1)">[-]</button>
-                    </div>
-                    <div class="counter" id="CB-00662">
-                        <div>CB-00662:</div>
-                        <button onclick="updateCounter('CB-00662', 1)">[+]</button> 
-                        <span id="count-CB-00662">0</span> 
-                        <button class="minus" onclick="updateCounter('CB-00662', -1)">[-]</button>
-                    </div>
-                    <div class="counter" id="CB-00660">
-                        <div>CB-00660:</div>
-                        <button onclick="updateCounter('CB-00660', 1)">[+]</button> 
-                        <span id="count-CB-00660">0</span> 
-                        <button class="minus" onclick="updateCounter('CB-00660', -1)">[-]</button>
-                    </div>
-                    <div class="counter" id="CB-00659">
-                        <div>CB-00659:</div>
-                        <button onclick="updateCounter('CB-00659', 1)">[+]</button> 
-                        <span id="count-CB-00659">0</span> 
-                        <button class="minus" onclick="updateCounter('CB-00659', -1)">[-]</button>
-                    </div>
-                    <div class="counter" id="CB-00658"> 
-                        <div>CB-00658:</div>
-                        <button onclick="updateCounter('CB-00658', 1)">[+]</button> 
-                        <span id="count-CB-00658">0</span> 
-                        <button class="minus" onclick="updateCounter('CB-00658', -1)">[-]</button>
-                    </div>
-                    <div class="counter" id="CB-00640">
-                        <div>CB-00640:</div>
-                        <button onclick="updateCounter('CB-00640', 1)">[+]</button> 
-                        <span id="count-CB-00640">0</span> 
-                        <button class="minus" onclick="updateCounter('CB-00640', -1)">[-]</button>
-                    </div>
-                    <div class="counter" id="CB-00644">
-                        <div>CB-00644:</div>
-                        <button onclick="updateCounter('CB-00644', 1)">[+]</button> 
-                        <span id="count-CB-00644">0</span> 
-                        <button class="minus" onclick="updateCounter('CB-00644', -1)">[-]</button>
-                    </div>
-                    <div class="counter" id="CB-00661">
-                        <div>CB-00661:</div>
-                        <button onclick="updateCounter('CB-00661', 1)">[+]</button> 
-                        <span id="count-CB-00661">0</span> 
-                        <button class="minus" onclick="updateCounter('CB-00661', -1)">[-]</button>
-                    </div>
-                    
-                </div>
-                <div class="quadro">
-                    <h2>Caminhão de 16m³:</h2>
-                    <div class="counter" id="CB-00594">
-                        <div>CB-00594:</div>
-                        <button onclick="updateCounter('CB-00594', 1)">[+]</button> 
-                        <span id="count-CB-00594">0</span> 
-                        <button class="minus" onclick="updateCounter('CB-00594', -1)">[-]</button>
-                    </div>
-                    <div class="counter" id="CB-00589">
-                        <div>CB-00589:</div>
-                        <button onclick="updateCounter('CB-00589', 1)">[+]</button> 
-                        <span id="count-CB-00589">0</span> 
-                        <button class="minus" onclick="updateCounter('CB-00589', -1)">[-]</button>
-                    </div>
-                    <div class="counter" id="CB-00595">
-                        <div>CB-00595:</div>
-                        <button onclick="updateCounter('CB-00595', 1)">[+]</button> 
-                        <span id="count-CB-00595">0</span> 
-                        <button class="minus" onclick="updateCounter('CB-00595', -1)">[-]</button>
-                    </div>
-                    <div class="counter" id="CB-00591">
-                        <div>CB-00591:</div>
-                        <button onclick="updateCounter('CB-00591', 1)">[+]</button> 
-                        <span id="count-CB-00591">0</span> 
-                        <button class="minus" onclick="updateCounter('CB-00591', -1)">[-]</button>
-                    </div>
-                    <div class="counter" id="CB-00580">
-                        <div>CB-00580:</div>
-                        <button onclick="updateCounter('CB-00580', 1)">[+]</button> 
-                        <span id="count-CB-00580">0</span> 
-                        <button class="minus" onclick="updateCounter('CB-00580', -1)">[-]</button>
-                    </div>
-                    <div class="counter" id="CB-00579">
-                        <div>CB-00579:</div>
-                        <button onclick="updateCounter('CB-00579', 1)">[+]</button> 
-                        <span id="count-CB-00579">0</span> 
-                        <button class="minus" onclick="updateCounter('CB-00579', -1)">[-]</button>
-                    </div>
-            </div>
-        </div>
-       
+    <!-- Ícones de redes sociais -->
+    <div class="social-icons">
+        <a href="https://discord.gg/27MhwZCr" target="_blank">
+            <img src="https://i.ibb.co/kM204c9/imagem-2024-10-26-152611648.png" alt="Discord">
+        </a>
+        <a href="https://youtube.com" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube">
+        </a>
+        <a href="https://instagram.com" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+        </a>
     </div>
-   
-    <script>
-        // Função para exibir ou ocultar o menu
-        function toggleMenu(menuId) {
-            const menu = document.getElementById(menuId);
-            menu.style.display = menu.style.display === "none" ? "block" : "none";
-        }
 
-        // Função para atualizar o contador
-        function updateCounter(counterId, value) {
-            const countElement = document.getElementById(`count-${counterId}`);
-            let currentCount = parseInt(countElement.textContent);
+    <!-- Logo -->
+    <img src="https://i.ibb.co/41ZKMww/Logo-jornal-sem-fundoo.png" alt="Logo" class="logo">
 
-            // Atualiza o contador
-            currentCount += value;
-            if (currentCount < 0) currentCount = 0; // Evita valores negativos
-            countElement.textContent = currentCount;
+    <!-- Linha de separação -->
+    <div class="line-dynamic"></div>
+    <div class="line"></div>
+    <!-- Menu -->
+    <div class="menu">
+        <a href="podcast.html">Podcast</a>
+        <a href="festas.html">Festas</a>
+        <a href="ultimas.html">Últimas Notícias</a>
+    </div>
+    <div class="line"></div>
+    <!-- Banner -->
+    <div class="banner-container">
+        <div class="banner-slide">
+            <img src="https://i.ibb.co/Z2gFhyf/Studio-Shodwe-1.jpg" alt="Banner 1">
+            <img src="https://i.ibb.co/yWFZR80/Studio-Shodwe-2.jpg" alt="Banner 2">
+        </div>
+    </div>
+    <!-- Principais Notícias -->
+    <div class="main-news">
+        <h2>Principais Notícias</h2>
+        <div class="youtube-video">
+            <!-- Link do YouTube incorporado com <iframe> -->
+                <iframe width="760" height="415" 
+                src="https://www.youtube.com/embed/gdNWfnS0QIM" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+        </iframe>
+        
+        </div>
+        <p>Assista ao vídeo exclusivo da notícia mais comentada do momento! Saiba tudo sobre o que aconteceu na última festa de celebridades.</p>
+    </div>
+    
 
-            // Salva o valor atualizado no localStorage
-            localStorage.setItem(counterId, currentCount);
+    <!-- Quadros de Fofoca -->
+    <div class="fofoca-container">
+        <div class="fofoca-item">
+            <img src="https://i.ibb.co/5F30Z0v/imagem-2024-10-16-181045813.png" alt="Notícia de Fofoca">
+            <h3>Celebridade A vista em festa</h3>
+            <p>Rumores dizem que a Celebridade A foi vista em uma festa com seu novo amor.</p>
+        </div>
+        <div class="fofoca-item">
+            <img src="https://i.ibb.co/5F30Z0v/imagem-2024-10-16-181045813.png" alt="Notícia de Fofoca">
+            <h3>Polêmica de reality show</h3>
+            <p>Participantes do reality show X discutem sobre as novas alianças e intrigas.</p>
+        </div>
+        <br>
+        
+    </div>
 
-            // Envia o relatório
-            sendReport(counterId, value, currentCount);
-        }
+    <!-- Selo de Autoria -->
+    <div class="author-seal">
+        © 2024 Complexo News - Todos os direitos reservados.
+    </div>
 
-        // Função para enviar relatório via webhook
-        async function sendReport(counterId, value, totalCount) {
-            const action = value > 0 ? 'ADICIONADO' : 'REMOVIDO';
-            const report = `ECT - ${counterId} - ${action} [${value}] | Total: ${totalCount}`;
-            
-            try {
-                const response = await fetch('https://discordapp.com/api/webhooks/1295029598689562785/nZ8lYwmR1IsPMmnJFEIKHQWRxG2yuajHSRK-3v4Ex9Pt-C7BdPdA3kusohq-3WdMQ2vJ', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ content: report })
-                });
-                
-                if (response.ok) {
-                    alert("Relatório enviado com sucesso!");
-                } else {
-                    throw new Error('Erro no envio');
-                }
-            } catch (error) {
-                alert("Erro ao enviar o relatório!");
-            }
-        }
-
-        // Função para resetar as metas após verificação da senha
-        function resetMeta() {
-            const senha = prompt("Digite a senha para resetar a meta:");
-
-            if (senha === "123456") {
-                localStorage.clear();
-                alert("Metas zeradas com sucesso!");
-                window.location.reload(); // Recarrega a página para atualizar os valores
-            } else {
-                alert("Negativo! Ta de sacanagem né? Porque quer apagar a meta? Na próxima é FATD em 😉");
-            }
-        }
-
-        // Carregar os valores dos contadores ao carregar a página
-        window.onload = function() {
-            const counterIds = ['CB-00579', 'CB-00580', 'CB-00591','CB-00595', 'CB-00594', 'CB-00589', 'CB-03', 'CB-04', 'CB-00662', 'CB-00660','CB-00659', 'CB-00658', 'CB-00640', 'CB-00644','CB-00661'];
-            counterIds.forEach(counterId => {
-                const savedCount = localStorage.getItem(counterId);
-                if (savedCount !== null) {
-                    document.getElementById(`count-${counterId}`).textContent = savedCount;
-                }
-            });
-        };
-    </script>
 </body>
 </html>
